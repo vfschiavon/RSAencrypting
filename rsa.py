@@ -57,4 +57,3 @@ print("BLOCKS: ",blocks)
 #separar em blocos tal que cada bloco seja menor que n
 
 #realizar as operações de encriptação10
-MARCO
