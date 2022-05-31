@@ -33,6 +33,7 @@ f = open("user-input.txt", "r")
 message = f.read()
 message = message.rstrip()
 f.close()
+print("Original:", message)
 
 #Making the dictionary letters and respective numbers (a=10, b=11, ...)
 group = {}
@@ -47,6 +48,7 @@ numered = ''
 blocks = []
 for letter in message:
     numered = numered + str(group[letter])
+print("Numered:", numered)
 
 #Dividing in blocks
 index = 0
@@ -64,17 +66,17 @@ while index <= len(numered):
     except IndexError:
         blocks.append(int(numered[index:]))
         break
-print("Original message:", blocks)
+print("Splited:", blocks)
 
 #Encrypting using power and mod operations with each block element
 coded = []
 for block in blocks:
     coded.append(block**e % n)
-print("Encrypted message:", coded)
+print("Encrypted:", coded)
 
 #Decrypting using power and mod operations with each block element
 dd = phi + d
 decoded = []
 for block in coded:
     decoded.append(block**dd % n)
-print("Decrypted message:", decoded)
+print("Decrypted:", decoded)
