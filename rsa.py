@@ -9,6 +9,8 @@ q = 13
 
 #Public key
 n = p * q
+
+#Definig phi(n)
 phi = (p - 1) * (q - 1)
 
 #Defining e
@@ -62,6 +64,7 @@ while index <= len(numered):
     except IndexError:
         blocks.append(int(numered[index:]))
         break
+print("Original message:", blocks)
 
 #Encrypting using power and mod operations with each block element
 coded = []
@@ -70,8 +73,8 @@ for block in blocks:
 print("Encrypted message:", coded)
 
 #Decrypting using power and mod operations with each block element
-daux = phi + d
+dd = phi + d
 decoded = []
 for block in coded:
-    decoded.append(block**daux % n)
+    decoded.append(block**dd % n)
 print("Decrypted message:", decoded)
