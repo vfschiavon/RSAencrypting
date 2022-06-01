@@ -4,7 +4,7 @@ from string import ascii_lowercase
 import unidecode
 import math
 
-#Big prime numbers
+#Really big prime numbers
 p = 11
 q = 13
 
