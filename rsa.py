@@ -1,6 +1,7 @@
 from sympy.solvers.diophantine import diophantine
 from sympy import symbols
 from string import ascii_lowercase
+import unidecode
 import math
 
 #Big prime numbers
@@ -31,9 +32,12 @@ d = eval(diop[0])
 #Reading the message to encrypt
 f = open("user-input.txt", "r")
 message = f.read()
-message = message.rstrip()
 f.close()
-print("Original:", message)
+print ("Original:", message)
+message = message.rstrip()
+message = message.lower()
+message = unidecode.unidecode(message)
+print("Handled:", message)
 
 #Making the dictionary letters and respective numbers (a=10, b=11, ...)
 group = {}
@@ -71,7 +75,7 @@ print("Splited:", blocks)
 #Encrypting using power and mod operations with each block element
 coded = []
 for block in blocks:
-    coded.append(block**e % n)
+    coded.append(pow(block, e, n))
 print("Encrypted:", coded)
 
 #Decrypting using power and mod operations with each block element
@@ -80,3 +84,16 @@ decoded = []
 for block in coded:
     decoded.append(block**dd % n)
 print("Decrypted:", decoded)
+
+decodednum = ''.join(str(x) for x in decoded)
+
+aux = ''
+decodedstr = ''
+for i in range(len(decodednum) - 1):
+    for j in group:
+        aux = decodednum[i] + decodednum[i + 1]
+        if aux == str(group[j]):
+            print(aux, group[j])
+            decodedstr = decodedstr + j
+    i += 2
+print ("Decoded:", decodedstr)
