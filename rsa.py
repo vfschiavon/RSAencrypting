@@ -89,11 +89,11 @@ print("Decrypted:", decoded)
 decodednum = ''.join(str(x) for x in decoded)
 aux = ''
 decodedstr = ''
-for i in range(len(decodednum) - 1):
+i = 0
+while i < len(decodednum):
     aux = decodednum[i] + decodednum[i + 1]
     for j in group:
         if aux == str(group[j]):
-            print(aux, group[j], j)
             decodedstr = decodedstr + j
     i += 2
 print ("Decoded:", decodedstr)
