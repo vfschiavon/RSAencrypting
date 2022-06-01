@@ -85,15 +85,15 @@ for block in coded:
     decoded.append(block**dd % n)
 print("Decrypted:", decoded)
 
+#Getting back to the original phrase
 decodednum = ''.join(str(x) for x in decoded)
-
 aux = ''
 decodedstr = ''
 for i in range(len(decodednum) - 1):
+    aux = decodednum[i] + decodednum[i + 1]
     for j in group:
-        aux = decodednum[i] + decodednum[i + 1]
         if aux == str(group[j]):
-            print(aux, group[j])
+            print(aux, group[j], j)
             decodedstr = decodedstr + j
     i += 2
 print ("Decoded:", decodedstr)
